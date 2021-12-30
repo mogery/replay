@@ -19,7 +19,7 @@ jobs:
           name: 'Gergő Móricz'
           email: 'mo.geryy@gmail.com'
           actor: 'mogery'
-          token: '${{ secrets.PAT }}'
+          token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Install Node.js
         uses: actions/setup-node@v1
