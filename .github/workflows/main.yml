@@ -12,6 +12,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - uses: oleksiyrudenko/gha-git-credentials@v2.1
+        with:
+          global: true
+          name: 'Gergő Móricz'
+          email: 'mo.geryy@gmail.com'
+          actor: 'mogery'
+          token: '${{ secrets.PAT }}'
 
       - name: Install Node.js
         uses: actions/setup-node@v1
