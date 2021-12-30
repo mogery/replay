@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import Landing from "./routes/Landing";
+import Auth from "./routes/Auth";
+import Callback from "./routes/Callback";
+import AppRouter from "./routes/app";
+import { ProvideAuth } from "./auth";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<ProvideAuth>
+			<BrowserRouter>
+				<Switch>
+					<Route
+						path="/" exact
+						component={Landing}
+					/>
+					<Route
+						path="/auth" exact
+						component={Auth}
+					/>
+					<Route
+						path="/callback" exact
+						component={Callback}
+					/>
+					<Route
+						path="/app"
+						component={AppRouter}
+					/>
+				</Switch>
+			</BrowserRouter>
+		</ProvideAuth>
+	)
 }
 
 export default App;

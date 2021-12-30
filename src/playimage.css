@@ -1,0 +1,15 @@
+.playimage[data-playing="true"] {
+    mask-image: url(/public/icons/pause-solid.svg);
+    mask-position: center;
+    mask-size: 66%;
+    mask-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.playimage[data-playing="false"]:hover {
+    mask-image: url(/public/icons/play-solid.svg);
+    mask-position: center;
+    mask-size: 66%;
+    mask-repeat: no-repeat;
+    cursor: pointer;
+}
