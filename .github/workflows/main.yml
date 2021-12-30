@@ -1,0 +1,29 @@
+name: CD
+
+on:
+  release:
+    types: [published]
+  
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build page
+        run: npm run build
+      
+      - name: Publish
+        run: npx gh-pages -d build/
