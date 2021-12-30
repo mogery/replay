@@ -5,6 +5,7 @@ import AppCreate from "./Create";
 import AppRoot from "./Root";
 import { useAuth } from "../../auth";
 import spotify from "../../spotify";
+import AppDone from "./Done";
 
 function AppRouter() {
     let auth = useAuth();
@@ -37,6 +38,10 @@ function AppRouter() {
             <Route
                 path={`${path}/create`} exact
                 component={AppCreate}
+            />
+            <Route
+                path={`${path}/done`} exact
+                component={AppDone}
             />
         </Switch>
     )

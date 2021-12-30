@@ -4,6 +4,7 @@ import TrackContainer from "../../components/TrackContainer";
 import PlaylistSummary from "../../components/PlaylistSummary";
 import spotify from "../../spotify";
 import { uniqify, shufflify } from "../../util";
+import { useHistory } from "react-router";
 
 const loadingTexts = [
     "Crunching numbers...",
@@ -13,6 +14,7 @@ const loadingTexts = [
 ];
 
 function AppCreate() {
+    let history = useHistory();
     let [name, setName] = useState("");
     let [data, setData] = useState(null);
     let [addedTracks, setAddedTracks] = useState([]);
@@ -157,7 +159,12 @@ function AppCreate() {
                         await spotify.addTracksToPlaylist(list.id, pendingTracks.splice(0, 100));
                     }
 
-                    console.log(list)
+                    history.push({
+                        pathname: "/app/done",
+                        search: "?" + new URLSearchParams({
+                            id: list.id
+                        }).toString()
+                    })
                 }}
             />
         </div>
