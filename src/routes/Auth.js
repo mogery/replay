@@ -2,7 +2,7 @@ function Auth() {
 	let url = new URL("https://accounts.spotify.com/authorize");
 	url.searchParams.append("client_id", "f4001ac9efb949f6a80ef0fb3633d868")
 	url.searchParams.append("response_type", "token");
-	url.searchParams.append("redirect_uri", "http://localhost:3000/callback");
+	url.searchParams.append("redirect_uri", process.env.NODE_ENV === "production" ? "http://replay.mogery.me/callback" : "http://localhost:3000/callback");
 	url.searchParams.append("scope", "playlist-read-private playlist-modify-public playlist-modify-private user-top-read user-follow-read")
 
 	const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
