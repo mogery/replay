@@ -2,8 +2,6 @@ import { Component, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPause, faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import "../playimage.css";
-
 class TrackContainerItem extends Component {
     state = {
         play: false

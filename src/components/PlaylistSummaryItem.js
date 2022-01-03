@@ -2,8 +2,6 @@ import { Component, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown, faTimes, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-import "../playimage.css";
-
 export default class PlaylistSummaryItem extends Component {
     state = {
         play: false
