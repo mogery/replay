@@ -52,7 +52,7 @@ export default class PlaylistSummaryItem extends Component {
                         onClick={this.props.track.preview_url ? this.togglePlay : undefined}
                         title={this.props.track.preview_url ? "Play track" : "Track preview unavailable"}
                     >
-                        <a target="_blank" ref="noreferrer" href={this.props.track.album.external_urls.spotify}>
+                        <a target="_blank" rel="noreferrer" href={this.props.track.album.external_urls.spotify}>
                             <img
                                 className="h-10 lg:h-6"
                                 src={this.props.track.album.images.slice(-1)[0].url}
@@ -62,7 +62,7 @@ export default class PlaylistSummaryItem extends Component {
                     </button>
                     <div className="flex gap-x-2 w-full overflow-hidden flex-col lg:flex-row">
                         <p className="truncate text-sm lg:text-base order-last lg:order-none" title={artistsName}>{artistsLinks}</p>
-                        <p className="font-bold truncate text-sm lg:text-base" title={this.props.track.name}><a href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
+                        <p className="font-bold truncate text-sm lg:text-base" title={this.props.track.name}><a target="_blank" rel="noreferrer" href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
                     </div>
                 </div>
                 <div className="flex gap-x-2 shrink-0">
