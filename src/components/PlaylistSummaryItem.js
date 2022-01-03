@@ -1,6 +1,6 @@
 import { Component, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp, faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown, faTimes, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import "../playimage.css";
 
@@ -35,6 +35,7 @@ export default class PlaylistSummaryItem extends Component {
     }
 
     render() {
+        let artistsLinks = this.props.track.artists.map((x,i,a) => <a target="_blank" rel="noreferrer" key={x.id} href={x.external_urls.spotify}>{x.name}{i === a.length - 1 ? "": ", "}</a>);
         let artistsName = this.props.track.artists.map(x => x.name).join(", ");
 
         return (
@@ -51,19 +52,27 @@ export default class PlaylistSummaryItem extends Component {
                         onClick={this.props.track.preview_url ? this.togglePlay : undefined}
                         title={this.props.track.preview_url ? "Play track" : "Track preview unavailable"}
                     >
-                        <img
-                            className="h-10 rounded lg:h-6 h-10 playimage"
-                            src={this.props.track.album.images.slice(-1)[0].url}
-                            alt={this.props.track.album.name}
-                                data-playing={this.props.track.preview_url ? this.state.play : "close"}
-                        />
+                        <a target="_blank" ref="noreferrer" href={this.props.track.album.external_urls.spotify}>
+                            <img
+                                className="h-10 lg:h-6"
+                                src={this.props.track.album.images.slice(-1)[0].url}
+                                alt={this.props.track.album.name}
+                            />
+                        </a>
                     </button>
                     <div className="flex gap-x-2 w-full overflow-hidden flex-col lg:flex-row">
-                        <p className="truncate text-sm lg:text-base order-last lg:order-none">{artistsName}</p>
-                        <p className="font-bold truncate text-sm lg:text-base">{this.props.track.name}</p>
+                        <p className="truncate text-sm lg:text-base order-last lg:order-none" title={artistsName}>{artistsLinks}</p>
+                        <p className="font-bold truncate text-sm lg:text-base" title={this.props.track.name}><a href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
                     </div>
                 </div>
                 <div className="flex gap-x-2 shrink-0">
+                    <button
+                            className={this.props.track.preview_url ? "" : "hidden"}
+                            disabled={!this.props.track.preview_url}
+                            onClick={this.props.track.preview_url ? this.togglePlay : undefined}
+                    >
+                        <FontAwesomeIcon className="p-px" icon={this.state.play ? faPause : faPlay} />
+                    </button>
                     <button
                         onClick={this.props.onMoveUp}
                         disabled={!this.props.canMoveUp}
