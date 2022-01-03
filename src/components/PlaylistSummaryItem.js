@@ -44,20 +44,13 @@ export default class PlaylistSummaryItem extends Component {
                     </audio>
                 ) : null}
                 <div className="flex gap-x-2 w-full overflow-hidden items-center">
-                    <button
-                        className="shrink-0"
-                        disabled={!this.props.track.preview_url}
-                        onClick={this.props.track.preview_url ? this.togglePlay : undefined}
-                        title={this.props.track.preview_url ? "Play track" : "Track preview unavailable"}
-                    >
-                        <a target="_blank" rel="noreferrer" href={this.props.track.album.external_urls.spotify}>
-                            <img
-                                className="h-10 lg:h-6"
-                                src={this.props.track.album.images.slice(-1)[0].url}
-                                alt={this.props.track.album.name}
-                            />
-                        </a>
-                    </button>
+                    <a target="_blank" rel="noreferrer" href={this.props.track.album.external_urls.spotify}>
+                        <img
+                            className="h-10 lg:h-6"
+                            src={this.props.track.album.images.slice(-1)[0].url}
+                            alt={this.props.track.album.name}
+                        />
+                    </a>
                     <div className="flex gap-x-2 w-full overflow-hidden flex-col lg:flex-row">
                         <p className="truncate text-sm lg:text-base order-last lg:order-none" title={artistsName}>{artistsLinks}</p>
                         <p className="font-bold truncate text-sm lg:text-base" title={this.props.track.name}><a target="_blank" rel="noreferrer" href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
@@ -65,9 +58,9 @@ export default class PlaylistSummaryItem extends Component {
                 </div>
                 <div className="flex gap-x-2 shrink-0">
                     <button
-                            className={this.props.track.preview_url ? "" : "hidden"}
-                            disabled={!this.props.track.preview_url}
-                            onClick={this.props.track.preview_url ? this.togglePlay : undefined}
+                        className={this.props.track.preview_url ? "" : "hidden"}
+                        disabled={!this.props.track.preview_url}
+                        onClick={this.props.track.preview_url ? this.togglePlay : undefined}
                     >
                         <FontAwesomeIcon className="p-px" icon={this.state.play ? faPause : faPlay} />
                     </button>
