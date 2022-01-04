@@ -5,6 +5,8 @@ import PlaylistSummary from "../../components/PlaylistSummary";
 import spotify from "../../spotify";
 import { uniqify, shufflify } from "../../util";
 import { useHistory } from "react-router";
+import SpotifyLogo from "../../spotify.png"
+import SpotifyIcon from "../../spotify_icon.png"
 
 const loadingTexts = [
     "Crunching numbers...",
@@ -102,7 +104,28 @@ function AppCreate() {
     return (
         <div className="w-full">
             <div className="min-h-screen w-full h-max justify-center bg-white p-6 md:p-12">
-                <h1 className="text-5xl font-extrabold md:w-1/4 mb-4">Pick some songs.</h1>
+                <div className="flex w-full justify-between">
+                    <h1 className="text-5xl font-extrabold md:w-1/4 mb-4">Pick some songs.</h1>
+                    <div className="flex flex-col items-center hidden md:block">
+                        <span>Tracks & Data via</span>
+                        <a target="_blank" rel="noreferrer" href="https://spotify.com">
+                            <img
+                                className="h-10"
+                                src={SpotifyLogo}
+                                alt="Spotify"
+                            />
+                        </a>
+                    </div>
+                    <div className="shrink-0 block md:hidden">
+                        <a target="_blank" rel="noreferrer" href="https://spotify.com">
+                            <img
+                                className="h-10"
+                                src={SpotifyIcon}
+                                alt="Spotify"
+                            />
+                        </a>
+                    </div>
+                </div>
                 <TrackContainer
                     name="Your recent tracks"
                     tracks={data.recentLovedSongs}
