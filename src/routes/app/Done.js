@@ -49,7 +49,7 @@ function AppDone() {
                         alt="Spotify"
                         src={SpotifyLogo}
                         style={{minWidth: "70px"}}
-                        className="h-10 mx-auto p-5 bg-white"
+                        className="box-content h-10 mx-auto p-5 bg-white"
                     />
                     {playlist.images.length > 0 
                         ? (
