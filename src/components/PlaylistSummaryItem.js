@@ -1,6 +1,7 @@
 import { Component, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown, faTimes, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import explicit from "../explicit.svg"
 
 export default class PlaylistSummaryItem extends Component {
     state = {
@@ -53,7 +54,17 @@ export default class PlaylistSummaryItem extends Component {
                     </a>
                     <div className="flex gap-x-2 w-full overflow-hidden flex-col lg:flex-row">
                         <p className="truncate text-sm lg:text-base order-last lg:order-none" title={artistsName}>{artistsLinks}</p>
-                        <p className="font-bold truncate text-sm lg:text-base" title={this.props.track.name}><a target="_blank" rel="noreferrer" href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
+                        <div className="overflow-hidden flex gap-x-1 items-center">
+                            {this.props.track.explicit ? (
+                                <img
+                                    alt="Explicit"
+                                    title="Explicit"
+                                    src={explicit}
+                                    className="inline-block h-3 shrink-0"
+                                />
+                            ) : null}
+                            <p className="font-bold truncate text-sm lg:text-base" title={this.props.track.name}><a target="_blank" rel="noreferrer" href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
+                        </div>
                     </div>
                 </div>
                 <div className="flex gap-x-2 shrink-0">

@@ -1,6 +1,7 @@
 import { Component, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPause, faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
+import explicit from "../explicit.svg";
 
 class TrackContainerItem extends Component {
     state = {
@@ -54,7 +55,19 @@ class TrackContainerItem extends Component {
                     </a>
                 </div>
                 <div className="w-full grow-0 overflow-hidden">
-                    <p className="text-sm font-bold truncate break-all" title={this.props.track.name}><a target="_blank" rel="noreferrer" href={this.props.track.external_urls.spotify}>{this.props.track.name}</a></p>
+                    <div className="flex w-full overflow-hidden gap-x-1 items-center">
+                        {this.props.track.explicit ? (
+                            <img
+                                alt="Explicit"
+                                title="Explicit"
+                                src={explicit}
+                                className="inline-block h-3 shrink-0"
+                            />
+                        ) : null}
+                        <p className="text-sm font-bold truncate break-all" title={this.props.track.name}>
+                            <a target="_blank" rel="noreferrer" href={this.props.track.external_urls.spotify}>{this.props.track.name}</a>
+                        </p>
+                    </div>
                     <p className="text-sm truncate break-all" title={artistsName}>{artistsLinks}</p>
                 </div>
                 <div className="shrink-0 ml-2 flex justify-center items-center gap-x-1">
