@@ -106,25 +106,20 @@ function AppCreate() {
             <div className="min-h-screen w-full h-max justify-center bg-white p-6 md:p-12">
                 <div className="flex w-full justify-between">
                     <h1 className="text-5xl font-extrabold md:w-1/4 mb-4">Pick some songs.</h1>
-                    <div className="flex flex-col items-center text-center hidden md:block">
-                        <p>Tracks & Data via</p>
-                        <a target="_blank" rel="noreferrer" href="https://spotify.com">
-                            <img
-                                className="h-10"
-                                src={SpotifyLogo}
-                                alt="Spotify"
-                            />
-                        </a>
-                    </div>
-                    <div className="shrink-0 block md:hidden">
-                        <a target="_blank" rel="noreferrer" href="https://spotify.com">
-                            <img
-                                className="h-10"
-                                src={SpotifyIcon}
-                                alt="Spotify"
-                            />
-                        </a>
-                    </div>
+                    <a target="_blank" rel="noreferrer" className="hidden md:block shrink-0" href="https://spotify.com">
+                        <img
+                            className="h-10"
+                            src={SpotifyLogo}
+                            alt="Spotify"
+                        />
+                    </a>
+                    <a target="_blank" rel="noreferrer" className="block md:hidden shrink-0" href="https://spotify.com">
+                        <img
+                            className="h-10"
+                            src={SpotifyIcon}
+                            alt="Spotify"
+                        />
+                    </a>
                 </div>
                 <TrackContainer
                     name="Your recent tracks"
