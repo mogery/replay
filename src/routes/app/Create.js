@@ -110,6 +110,7 @@ function AppCreate() {
                         <img
                             className="h-10"
                             src={SpotifyLogo}
+                            style={{minWidth: "70px"}}
                             alt="Spotify"
                         />
                     </a>
@@ -117,6 +118,7 @@ function AppCreate() {
                         <img
                             className="h-10"
                             src={SpotifyIcon}
+                            style={{minWidth: "21px"}}
                             alt="Spotify"
                         />
                     </a>
